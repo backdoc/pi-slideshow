@@ -2,7 +2,7 @@ module PiSlides
 
   ImageDir = Struct.new(:path) do
     def file_list(pattern = '**/*.jpg')
-      @file_list ||= Dir[File.join(path, pattern)].shuffle
+      @file_list ||= Dir.glob(File.join(path, pattern), File::FNM_CASEFOLD).shuffle
     end
 
     def reset
